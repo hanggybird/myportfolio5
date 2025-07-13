@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Activities - Thaksin Suphachokpongsiri</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/activities.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="certificate.html">Certificate</a></li>
+      <li><a href="activities.html" class="active">Activities</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Activities Section -->
+  <main class="activities-section">
+    <div class="overlay"></div>
+    <div class="activities-container">
+      <h1>Activities</h1>
+      <p class="intro">These activities showcase my experience, contribution, and active participation in both academic and social events.</p>
+
+      <div class="activities-grid">
+        <div class="activities-card">
+          <img src="IMG_2760.jpg" alt="Volunteer Activity">
+          <h2>โครงการจิตอาสาเพื่อสังคม</h2>
+          <p>ทำความสะอาดพื้นที่ชุมชน ร่วมกับเพื่อนนักศึกษา และจัดกิจกรรมเสริมสร้างความรู้ให้กับเยาวชนในท้องถิ่น</p>
+        </div>
+
+        <div class="activities-card">
+          <img src="IMG_2808.jpg" alt="Academic Quiz">
+          <h2>การแข่งขันตอบปัญหาวิชาการ</h2>
+          <p>เข้าร่วมการแข่งขันตอบปัญหาด้านวิทยาศาสตร์ระดับมหาวิทยาลัย ได้รับรางวัลชมเชยจากผลงานร่วมกับทีม</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Thaksin Suphachokpongsiri. All rights reserved.
+  </footer>
+
+
+<script>
+  document.body.classList.add('fade-in');
+
+  document.querySelectorAll('a[href]').forEach(link => {
+    const url = link.getAttribute('href');
+    if (url && !url.startsWith('http') && !url.startsWith('#') && !link.hasAttribute('target')) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.body.classList.remove('fade-in');
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+          window.location = url;
+        }, 400);
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

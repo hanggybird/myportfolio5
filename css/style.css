@@ -1,0 +1,126 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #2e3239;
+  color: #f1f1f1;
+}
+
+/* Navbar */
+nav {
+  background-color: #3d4147;
+  padding: 15px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: #bbb;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+  color: #ffffff;
+  border-bottom: 2px solid #8A9A5B;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(120deg, #2e3239, #3d4147, #2e3239);
+  background-size: 600% 600%;
+  animation: bgMove 20s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #f1f1f1;
+  overflow: hidden;
+  padding-top: 100px;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 20, 20, 0.6);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  color: #BFA5A0;
+  margin-bottom: 10px;
+}
+
+.hero-content h2 {
+  font-size: 2rem;
+  font-weight: normal;
+  color: #F8F6F0;
+}
+
+.hero-content h2 span {
+  color: #8A9A5B;
+  font-weight: bold;
+  border-right: 2px solid #8A9A5B;
+  padding-right: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+.hero-content p {
+  margin-top: 20px;
+  color: #ccc;
+  font-size: 1.2rem;
+}
+
+/* Footer */
+footer {
+  background-color: #3d4147;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+
+body.fade-out {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+body.fade-in {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}

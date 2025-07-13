@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - Thaksin Suphachokpongsiri</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <meta property="og:title" content="About - Thaksin Suphachokpongsiri" />
+  <meta property="og:description" content="Learn more about Thaksin, a developer passionate about solving real-world problems." />
+  <meta property="og:image" content="profile.jpg" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About Me</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="certificate.html">Certificate</a></li>
+      <li><a href="activities.html">Activities</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- About Section -->
+  <main class="about-section">
+    <div class="overlay"></div>
+    <div class="about-container">
+      <div class="about-image">
+        <img src="profile.jpg" alt="Profile photo of Thaksin Suphachokpongsiri">
+      </div>
+      <div class="about-text">
+        <h1>About Me</h1>
+        <p>Hello! I'm <strong>Thaksin Suphachokpongsiri</strong>, a computer science student who enjoys building useful, elegant, and efficient digital systems.</p>
+        <p>My passion lies in creating tools that solve real-world problems — from frontend interfaces to backend logic. I love writing clean code, learning new technologies, and collaborating with people who share the same drive.</p>
+        <p>When I'm not coding, I enjoy reading tech blogs, exploring new frameworks, and (sometimes) debugging at 3am with coffee in hand.</p>
+        <p><em>Let’s build something great together.</em></p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Thaksin Suphachokpongsiri. All rights reserved.
+  </footer>
+
+
+<script>
+  document.body.classList.add('fade-in');
+
+  document.querySelectorAll('a[href]').forEach(link => {
+    const url = link.getAttribute('href');
+    if (url && !url.startsWith('http') && !url.startsWith('#') && !link.hasAttribute('target')) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.body.classList.remove('fade-in');
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+          window.location = url;
+        }, 400);
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

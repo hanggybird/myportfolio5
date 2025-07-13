@@ -1,0 +1,100 @@
+/* Section background and animation */
+.certificate-section {
+  position: relative;
+  background: linear-gradient(120deg, #2e3239, #3d4147, #2e3239);
+  background-size: 600% 600%;
+  animation: bgMove 20s ease infinite;
+  padding: 120px 20px 60px;
+  color: #f1f1f1;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.certificate-section .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 20, 20, 0.6);
+  z-index: 1;
+}
+
+/* Container */
+.certificate-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+}
+
+.certificate-container h1 {
+  font-size: 2.5rem;
+  color: #BFA5A0;
+  margin-bottom: 20px;
+}
+
+.certificate-container .intro {
+  font-size: 1.1rem;
+  color: #ddd;
+  margin-bottom: 40px;
+}
+
+/* Grid Layout */
+.certificate-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+/* Individual Card */
+.certificate-card {
+  background-color: #3d4147;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  max-width: 300px;
+  flex: 1 1 250px;
+  transition: transform 0.3s ease;
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px);
+}
+
+.certificate-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.certificate-card h2 {
+  font-size: 1.3rem;
+  color: #8A9A5B;
+  margin-bottom: 10px;
+}
+
+.certificate-card p {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Animated BG */
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .certificate-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .certificate-card {
+    width: 90%;
+  }
+}

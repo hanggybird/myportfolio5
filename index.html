@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home - Thaksin Suphachokpongsiri</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Thaksin Suphachokpongsiri - Developer Portfolio" />
+  <meta property="og:description" content="Crafting clean & functional digital experiences." />
+  <meta property="og:image" content="profile.jpg" />
+</head>
+<body>
+
+  <!-- 🌐 Navigation -->
+  <nav>
+    <ul>
+      <!-- 🌐 Navigation -->
+<nav>
+  <ul>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About Me</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="certificate.html">Certificate</a></li>
+    <li><a href="activities.html">Activities</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+    </ul>
+  </nav>
+
+  <!-- 🎯 Hero Section -->
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Hello,</h1>
+      <h2><span id="typed-text"></span></h2>
+      <p>I’m a developer who crafts clean & functional digital experiences.</p>
+    </div>
+  </header>
+
+  <!-- 👣 Footer -->
+  <footer>
+    © 2025 Thaksin Suphachokpongsiri. All rights reserved.
+  </footer>
+
+  <!-- ⚙️ Typewriter Script -->
+  <script>
+    window.addEventListener("load", () => {
+      const target = document.getElementById("typed-text");
+      if (!target) return;
+      const text = "My name is Thaksin Suphachokpongsiri";
+      let i = 0;
+
+      function type() {
+        if (i < text.length) {
+          target.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(type, 80);
+        }
+      }
+
+      type();
+    });
+  </script>
+
+
+<script>
+  document.body.classList.add('fade-in');
+
+  document.querySelectorAll('a[href]').forEach(link => {
+    const url = link.getAttribute('href');
+    if (url && !url.startsWith('http') && !url.startsWith('#') && !link.hasAttribute('target')) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.body.classList.remove('fade-in');
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+          window.location = url;
+        }, 400);
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

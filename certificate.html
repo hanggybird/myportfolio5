@@ -9,7 +9,7 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="fade-in">
 
   <!-- Navigation -->
   <nav>
@@ -19,6 +19,7 @@
       <li><a href="skills.html">Skills</a></li>
       <li><a href="certificate.html" class="active">Certificate</a></li>
       <li><a href="activities.html">Activities</a></li>
+      <li><a href="project.html">Project</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
@@ -31,28 +32,28 @@
       <p class="intro">These certificates represent my learning journey, skill development, and continuous growth in tech.</p>
 
       <div class="certificate-grid">
-        <div class="certificate-card">
-          <img src="ce1.png" alt="Frontend Certificate">
-          <h2>Frontend Development</h2>
-          <p>Completed intensive training in HTML, CSS, and JavaScript.</p>
+        <div class="certificate-card scroll-reveal">
+          <img src="image/ce1.png" alt="Frontend Certificate">
+          <h2>สำนักงานส่งเสริมดิจิตัล</h2>
+          <p>The FUNDAMENTALS OF SMART CITY</p>
         </div>
 
-        <div class="certificate-card">
-          <img src="ce2.png" alt="React Certificate">
-          <h2>React for Beginners</h2>
-          <p>Built real-world projects and components using React.js.</p>
+        <div class="certificate-card scroll-reveal">
+          <img src="image/ce2.png" alt="React Certificate">
+          <h2>COURSERA PROJECT NETWORK</h2>
+          <p>Customer Service with Python: Build a Chatbot using ChatGPT</p>
         </div>
 
-        <div class="certificate-card">
-          <img src="ce3.png" alt="Python Certificate">
-          <h2>Python Programming</h2>
-          <p>Completed core Python programming course with hands-on projects.</p>
+        <div class="certificate-card scroll-reveal">
+          <img src="image/ce3.png" alt="Python Certificate">
+          <h2>วิทยาลัยเทคนิคน้ำผอง</h2>
+          <p>ผ่านการเขียนโปรแกรมเบื้องต้น</p>
         </div>
 
-        <div class="certificate-card">
-          <img src="ce4.png" alt="Git Certificate">
-          <h2>Git & GitHub Mastery</h2>
-          <p>Mastered version control and collaboration using Git and GitHub.</p>
+        <div class="certificate-card scroll-reveal">
+          <img src="image/ce4.png" alt="Git Certificate">
+          <h2>วิทยาลัยเทคนิคสิชล</h2>
+          <p>ผ่านหลักสูตร คอมพิวเตอร์และสารสนเทศเพื่องานอาชีพ</p>
         </div>
       </div>
     </div>
@@ -63,24 +64,35 @@
     © 2025 Thaksin Suphachokpongsiri. All rights reserved.
   </footer>
 
-
-<script>
-  document.body.classList.add('fade-in');
-
-  document.querySelectorAll('a[href]').forEach(link => {
-    const url = link.getAttribute('href');
-    if (url && !url.startsWith('http') && !url.startsWith('#') && !link.hasAttribute('target')) {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.body.classList.remove('fade-in');
-        document.body.classList.add('fade-out');
-        setTimeout(() => {
-          window.location = url;
-        }, 400);
+   <script>
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.scroll-reveal');
+      const windowHeight = window.innerHeight;
+      reveals.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < windowHeight - 100) {
+          el.classList.add('revealed');
+        }
       });
     }
-  });
-</script>
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    document.querySelectorAll('a[href]').forEach(link => {
+      const url = link.getAttribute('href');
+      if (url && !url.startsWith('http') && !url.startsWith('#') && !link.hasAttribute('target')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.remove('fade-in');
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location = url;
+          }, 400);
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>

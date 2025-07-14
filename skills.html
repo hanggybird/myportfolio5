@@ -9,7 +9,7 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="fade-in">
 
   <!-- Navigation -->
   <nav>
@@ -19,19 +19,20 @@
       <li><a href="skills.html" class="active">Skills</a></li>
       <li><a href="certificate.html">Certificate</a></li>
       <li><a href="activities.html">Activities</a></li>
+      <li><a href="project.html">Project</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
   <!-- Skills Section -->
-  <main class="skills-section">
+  <main class="skills-section scroll-reveal">
     <div class="overlay"></div>
     <div class="skills-container">
       <h1>Technical Skills</h1>
       <p class="intro">These are the technologies, tools, and environments I work with regularly and feel confident using in real-world projects.</p>
 
       <div class="skills-grid">
-        <div class="skill-card" style="max-width: 360px;">
+        <div class="skill-card">
           <h2>Frontend</h2>
           <ul>
             <li><span>HTML5</span><progress value="95" max="100"></progress></li>
@@ -41,7 +42,7 @@
           </ul>
         </div>
 
-        <div class="skill-card" style="max-width: 360px;">
+        <div class="skill-card">
           <h2>Backend</h2>
           <ul>
             <li><span>Node.js</span><progress value="75" max="100"></progress></li>
@@ -51,7 +52,7 @@
           </ul>
         </div>
 
-        <div class="skill-card" style="max-width: 360px;">
+        <div class="skill-card">
           <h2>Tools & DevOps</h2>
           <ul>
             <li><span>Git / GitHub</span><progress value="90" max="100"></progress></li>
@@ -62,7 +63,7 @@
         </div>
       </div>
 
-      <div class="skills-extra">
+      <div class="skills-extra scroll-reveal">
         <h2>Soft Skills</h2>
         <ul>
           <li>🧠 Problem-solving mindset</li>
@@ -74,29 +75,39 @@
     </div>
   </main>
 
-  <!-- Footer -->
   <footer>
     © 2025 Thaksin Suphachokpongsiri. All rights reserved.
   </footer>
 
+  <!-- Scripts -->
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      const url = link.getAttribute('href');
+      if (url && !url.startsWith('http') && !url.startsWith('#') && !link.hasAttribute('target')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.remove('fade-in');
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location = url;
+          }, 400);
+        });
+      }
+    });
 
-<script>
-  document.body.classList.add('fade-in');
-
-  document.querySelectorAll('a[href]').forEach(link => {
-    const url = link.getAttribute('href');
-    if (url && !url.startsWith('http') && !url.startsWith('#') && !link.hasAttribute('target')) {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.body.classList.remove('fade-in');
-        document.body.classList.add('fade-out');
-        setTimeout(() => {
-          window.location = url;
-        }, 400);
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.scroll-reveal');
+      const windowHeight = window.innerHeight;
+      reveals.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 100) {
+          el.classList.add('revealed');
+        }
       });
     }
-  });
-</script>
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
 
 </body>
 </html>

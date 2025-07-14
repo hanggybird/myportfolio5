@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact - Thaksin Suphachokpongsiri</title>
+  <title>Projects - Thaksin Suphachokpongsiri</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/project.css" />
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body class="fade-in">
 
@@ -20,32 +19,36 @@
       <li><a href="skills.html">Skills</a></li>
       <li><a href="certificate.html">Certificate</a></li>
       <li><a href="activities.html">Activities</a></li>
-      <li><a href="project.html">Project</a></li>
-      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="project.html" class="active">Project</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Contact Section -->
-  <main class="contact-section scroll-reveal">
+  <!-- Project Section -->
+  <main class="project-section scroll-reveal">
     <div class="overlay"></div>
-    <div class="contact-container">
-      <h1>Contact Me</h1>
-      <p class="intro">Feel free to reach out for collaboration, questions, or just to say hello!</p>
+    <div class="project-container">
+      <h1>Projects</h1>
+      <p class="intro">Here are some of the personal and academic projects I've built — each solving real problems and refining my skills.</p>
 
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+      <div class="project-grid">
+        <div class="project-card scroll-reveal">
+          <img src="image/pro1.png" alt="Meaw Mate">
+          <h2>Meaw Mate</h2>
+          <p>เว็บไซต์จับคู่แมวสำหรับผสมพันธุ์ หาบ้านใหม่ และแชร์ความรู้เกี่ยวกับแมวได้</p>
+        </div>
 
-      <div class="contact-social">
-        <p>Or connect via:</p>
-        <ul>
-          <li><a href="https://github.com/hanggybird" target="_blank"><i class="fab fa-github"></i></a></li>
-          <li><a href="https://www.instagram.com/hanggyb1rd/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-          <li><a href="https://www.facebook.com/Hang1025/" target="_blank"><i class="fab fa-facebook"></i></a></li>
-        </ul>
+        <div class="project-card scroll-reveal">
+          <img src="image/pro2.jpg" alt="Car Control by ESP32">
+          <h2>Car control by ESP32</h2>
+          <p>สร้างรถบังคับด้วย ESP32 และควบคุมผ่านแอป Blynk</p>
+        </div>
+
+        <div class="project-card scroll-reveal">
+          <img src="image/pro3.png" alt="Stock Product Website">
+          <h2>Stock Product Website</h2>
+          <p>เว็บไซต์สต๊อกสินค้านาฬิกา จัดการข้อมูลสินค้าในระบบ</p>
+        </div>
       </div>
     </div>
   </main>

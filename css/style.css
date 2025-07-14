@@ -1,25 +1,38 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background-color: #2e3239;
+  background: radial-gradient(circle at center, #2e3239, #1e1f26 80%);
+  background-attachment: fixed;
+  background-size: cover;
+  animation: bgMove 20s ease infinite;
   color: #f1f1f1;
+  overflow-x: hidden;
 }
 
-/* Navbar */
+/* Particle background */
+#particles-js {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 200%;
+  z-index: 2;
+}
+
 nav {
-  background-color: #3d4147;
+  background-color: rgba(45, 48, 54, 0.9);
   padding: 15px;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 2;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 
 nav ul {
   display: flex;
   justify-content: center;
   list-style: none;
-  gap: 40px;
+  gap: 30px;
   margin: 0;
   padding: 0;
 }
@@ -28,7 +41,7 @@ nav a {
   color: #bbb;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s;
+  transition: all 0.3s ease;
 }
 
 nav a:hover,
@@ -37,33 +50,43 @@ nav a.active {
   border-bottom: 2px solid #8A9A5B;
 }
 
-/* Hero Section */
 .hero {
   position: relative;
   height: 100vh;
-  background: linear-gradient(120deg, #2e3239, #3d4147, #2e3239);
-  background-size: 600% 600%;
-  animation: bgMove 20s ease infinite;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #f1f1f1;
   overflow: hidden;
   padding-top: 100px;
-}
-
-@keyframes bgMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  z-index: 1;
 }
 
 .hero .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(20, 20, 20, 0.6);
+  background: rgba(0, 0, 0, 0.6);
   z-index: 1;
+}
+
+/* 💡 Floating Glow Effect */
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(138,154,91,0.3) 0%, transparent 70%);
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(80px);
+  z-index: 0;
+  animation: floatGlow 10s ease-in-out infinite alternate;
+}
+
+@keyframes floatGlow {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  100% { transform: translate(-50%, -60%) scale(1.2); }
 }
 
 .hero-content {
@@ -77,12 +100,14 @@ nav a.active {
   font-size: 3rem;
   color: #BFA5A0;
   margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 .hero-content h2 {
   font-size: 2rem;
   font-weight: normal;
   color: #F8F6F0;
+  text-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 .hero-content h2 span {
@@ -103,24 +128,21 @@ nav a.active {
   margin-top: 20px;
   color: #ccc;
   font-size: 1.2rem;
+  text-shadow: 0 0 6px rgba(0,0,0,0.3);
 }
 
-/* Footer */
 footer {
   background-color: #3d4147;
   text-align: center;
   padding: 20px;
   font-size: 0.9rem;
   color: #999;
+  z-index: 2;
+  position: relative;
 }
 
-
-body.fade-out {
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-body.fade-in {
-  opacity: 1;
-  transition: opacity 0.4s ease;
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

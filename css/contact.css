@@ -1,3 +1,13 @@
+body.fade-in {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+body.fade-out {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
 .contact-section {
   position: relative;
   background: linear-gradient(120deg, #2e3239, #3d4147, #2e3239);
@@ -49,9 +59,13 @@
   border: none;
   border-radius: 8px;
   font-size: 1rem;
-  background-color: #f1f1f1;
+  background-color: rgba(255,255,255,0.9);
   color: #333;
   font-family: 'Inter', sans-serif;
+}
+
+.contact-form textarea {
+  resize: vertical;
 }
 
 .contact-form button {
@@ -69,27 +83,74 @@
   background-color: #738045;
 }
 
+/* Social Media Icons */
+.contact-social p {
+  color: #ddd;
+  margin-bottom: 10px;
+}
+
 .contact-social ul {
   list-style: none;
   display: flex;
   justify-content: center;
   gap: 20px;
   padding: 0;
+  margin: 0;
+}
+
+.contact-social li {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.contact-social li:hover {
+  background: #8A9A5B;
 }
 
 .contact-social a {
   color: #ccc;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
+  font-size: 1.4rem;
+  display: inline-block;
+  transition: color 0.3s ease;
 }
 
 .contact-social a:hover {
-  color: #ffffff;
+  color: #fff;
 }
 
+/* Scroll Reveal */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Background Animation */
 @keyframes bgMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .contact-container {
+    width: 90%;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.95rem;
+  }
+
+  .contact-form button {
+    font-size: 1rem;
+  }
 }

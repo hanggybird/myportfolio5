@@ -10,16 +10,15 @@ body.fade-out {
 
 .project-section {
   position: relative;
-  background: linear-gradient(120deg, #2e3239, #3d4147, #2e3239);
+  background: linear-gradient(120deg, #2e3239, #3d4147);
   background-size: 600% 600%;
   animation: bgMove 20s ease infinite;
   padding: 120px 20px 60px;
   color: #f1f1f1;
   min-height: 100vh;
-  overflow: hidden;
 }
 
-.project-section .overlay {
+.overlay {
   position: absolute;
   inset: 0;
   background: rgba(20, 20, 20, 0.6);
@@ -44,9 +43,6 @@ body.fade-out {
   font-size: 1.1rem;
   color: #ddd;
   margin-bottom: 40px;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .project-grid {
@@ -54,26 +50,21 @@ body.fade-out {
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 10px;
 }
 
 .project-card {
-  background-color: rgba(255,255,255,0.04);
-  border-radius: 12px;
+  background-color: rgba(255,255,255,0.05);
   border-left: 5px solid #8A9A5B;
   padding: 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  border-radius: 12px;
   max-width: 300px;
-  flex: 1 1 250px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
+  cursor: pointer;
   backdrop-filter: blur(4px);
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(138,154,91,0.4);
+  transform: scale(1.05);
 }
 
 .project-card img {
@@ -86,18 +77,15 @@ body.fade-out {
 }
 
 .project-card h2 {
-  font-size: 1.3rem;
   color: #8A9A5B;
-  margin-bottom: 10px;
 }
 
 .project-card p {
   color: #ccc;
   font-size: 0.95rem;
-  line-height: 1.5;
 }
 
-/* Scroll Reveal */
+/* Scroll Reveal Effect */
 .scroll-reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -109,21 +97,82 @@ body.fade-out {
   transform: translateY(0);
 }
 
-/* Background Animation */
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 999;
+}
+
+.lightbox.show {
+  display: flex;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 10px;
+  transition: transform 0.3s;
+  cursor: zoom-in;
+}
+
+.lightbox-content img:hover {
+  transform: scale(1.05);
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 2rem;
+  color: white;
+  background: rgba(50, 50, 50, 0.5);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  transform: translateY(-50%);
+}
+
+.arrow.left {
+  left: 30px;
+}
+
+.arrow.right {
+  right: 30px;
+}
+
 @keyframes bgMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Responsive */
 @media screen and (max-width: 768px) {
   .project-grid {
     flex-direction: column;
     align-items: center;
   }
 
-  .project-card {
-    width: 90%;
+  .arrow {
+    font-size: 1.5rem;
   }
 }

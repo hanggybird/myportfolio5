@@ -11,7 +11,6 @@
 </head>
 <body class="fade-in">
 
-  <!-- Navigation -->
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -24,46 +23,91 @@
     </ul>
   </nav>
 
-  <!-- Project Section -->
   <main class="project-section scroll-reveal">
     <div class="overlay"></div>
     <div class="project-container">
       <h1>Projects</h1>
-      <p class="intro">Here are some of the personal and academic projects I've built — each solving real problems and refining my skills.</p>
+      <p class="intro">Explore my projects and click to view gallery with zoom and navigation.</p>
 
       <div class="project-grid">
-        <div class="project-card scroll-reveal">
-          <img src="image/pro1.png" alt="Meaw Mate">
+        <div class="project-card scroll-reveal" onclick="openGallery(0)">
+          <img src="image/meaw1.png" alt="Meaw Mate">
           <h2>Meaw Mate</h2>
-          <p>เว็บไซต์จับคู่แมวสำหรับผสมพันธุ์ หาบ้านใหม่ และแชร์ความรู้เกี่ยวกับแมวได้</p>
+          <p>เว็บไซต์จับคู่แมวสำหรับผสมพันธุ์ หาบ้านใหม่ และแชร์ความรู้เกี่ยวกับแมว</p>
         </div>
-
-        <div class="project-card scroll-reveal">
-          <img src="image/pro2.jpg" alt="Car Control by ESP32">
+        <div class="project-card scroll-reveal" onclick="openGallery(1)">
+          <img src="image/pro2.jpg" alt="Car Control">
           <h2>Car control by ESP32</h2>
           <p>สร้างรถบังคับด้วย ESP32 และควบคุมผ่านแอป Blynk</p>
         </div>
-
-        <div class="project-card scroll-reveal">
-          <img src="image/pro3.png" alt="Stock Product Website">
+        <div class="project-card scroll-reveal" onclick="openGallery(2)">
+          <img src="image/product1.png" alt="Stock Website">
           <h2>Stock Product Website</h2>
-          <p>เว็บไซต์สต๊อกสินค้านาฬิกา จัดการข้อมูลสินค้าในระบบ</p>
+          <p>เว็บไซต์สำหรับสต๊อกสินค้านาฬิกา</p>
         </div>
       </div>
     </div>
   </main>
+
+  <!-- Lightbox Gallery -->
+  <div class="lightbox" id="lightbox" onclick="closeGallery()">
+    <span class="close-btn" onclick="closeGallery()">×</span>
+    <span class="arrow left" onclick="prevImage(event)">&#10094;</span>
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <img id="lightbox-img" src="" alt="Zoomed Image">
+    </div>
+    <span class="arrow right" onclick="nextImage(event)">&#10095;</span>
+  </div>
 
   <footer>
     © 2025 Thaksin Suphachokpongsiri. All rights reserved.
   </footer>
 
   <script>
+    const imageGroups = [
+      ["image/meaw1.png", "image/meaw2.png", "image/meaw3.png", "image/meaw4.png", "image/meaw5.png", "image/meaw6.png", "image/meaw7.png"],
+      ["image/pro2.jpg", "image/iot1.png"],
+      ["image/product1.png", "image/product2.png", "image/product3.png", "image/product4.png", "image/product5.png"]
+    ];
+
+    let currentGroup = [];
+    let currentIndex = 0;
+
+    function openGallery(groupIndex) {
+      currentGroup = imageGroups[groupIndex];
+      currentIndex = 0;
+      updateImage();
+      document.getElementById("lightbox").classList.add("show");
+    }
+
+    function closeGallery() {
+      document.getElementById("lightbox").classList.remove("show");
+    }
+
+    function updateImage() {
+      const img = document.getElementById("lightbox-img");
+      img.src = currentGroup[currentIndex];
+    }
+
+    function nextImage(e) {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % currentGroup.length;
+      updateImage();
+    }
+
+    function prevImage(e) {
+      e.stopPropagation();
+      currentIndex = (currentIndex - 1 + currentGroup.length) % currentGroup.length;
+      updateImage();
+    }
+
+    // Scroll reveal effect
     function revealOnScroll() {
       const reveals = document.querySelectorAll('.scroll-reveal');
       const windowHeight = window.innerHeight;
       reveals.forEach(el => {
-        const top = el.getBoundingClientRect().top;
-        if (top < windowHeight - 100) {
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 100) {
           el.classList.add('revealed');
         }
       });
@@ -71,21 +115,6 @@
 
     window.addEventListener('scroll', revealOnScroll);
     window.addEventListener('load', revealOnScroll);
-
-    document.querySelectorAll('a[href]').forEach(link => {
-      const url = link.getAttribute('href');
-      if (url && !url.startsWith('http') && !url.startsWith('#') && !link.hasAttribute('target')) {
-        link.addEventListener('click', function (e) {
-          e.preventDefault();
-          document.body.classList.remove('fade-in');
-          document.body.classList.add('fade-out');
-          setTimeout(() => {
-            window.location = url;
-          }, 400);
-        });
-      }
-    });
   </script>
-
 </body>
 </html>

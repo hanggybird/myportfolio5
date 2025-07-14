@@ -32,23 +32,73 @@
       <p class="intro">These activities showcase my experience, contribution, and active participation in both academic and social events.</p>
 
       <div class="activities-grid">
-        <div class="activities-card scroll-reveal">
+        <div class="activities-card" onclick="openGallery(0)">
           <img src="image/IMG_2760.jpg" alt="Volunteer Activity">
-          <h2>Healthtech X you</h2>
+          <h2>Healthtech X You</h2>
           <p>เข้าร่วมการแข่งขันเกี่ยวกับเทคโนโลยีด้านสุขภาพ</p>
         </div>
-        <!-- เพิ่มการ์ดอื่น ๆ ได้ตามต้องการ -->
       </div>
     </div>
   </main>
+
+  <!-- Lightbox Gallery -->
+  <div class="lightbox" id="lightbox" onclick="closeGallery()">
+    <span class="close-btn" onclick="closeGallery()">×</span>
+    <span class="arrow left" onclick="prevImage(event)">&#10094;</span>
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <img id="lightbox-img" src="" alt="Zoomed Image">
+    </div>
+    <span class="arrow right" onclick="nextImage(event)">&#10095;</span>
+  </div>
 
   <!-- Footer -->
   <footer>
     © 2025 Thaksin Suphachokpongsiri. All rights reserved.
   </footer>
 
-  <!-- Scroll Effect Script -->
+  <!-- Script -->
   <script>
+    // Images for each activity card
+    const imageGroups = [
+      [
+        "image/IMG_2760.jpg",
+        "image/IMG_2808.jpg",
+        
+      ]
+    ];
+
+    let currentGroup = [];
+    let currentIndex = 0;
+
+    function openGallery(groupIndex) {
+      currentGroup = imageGroups[groupIndex];
+      currentIndex = 0;
+      updateImage();
+      document.getElementById("lightbox").classList.add("show");
+    }
+
+    function closeGallery() {
+      document.getElementById("lightbox").classList.remove("show");
+    }
+
+    function updateImage() {
+      const img = document.getElementById("lightbox-img");
+      img.src = currentGroup[currentIndex];
+    }
+
+    function nextImage(e) {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % currentGroup.length;
+      updateImage();
+    }
+
+    function prevImage(e) {
+      e.stopPropagation();
+      currentIndex = (currentIndex - 1 + currentGroup.length) % currentGroup.length;
+      updateImage();
+    }
+
+    // Scroll reveal effect
     function revealOnScroll() {
       const reveals = document.querySelectorAll('.scroll-reveal');
       const windowHeight = window.innerHeight;
@@ -62,20 +112,6 @@
 
     window.addEventListener('scroll', revealOnScroll);
     window.addEventListener('load', revealOnScroll);
-
-    document.querySelectorAll('a[href]').forEach(link => {
-      const url = link.getAttribute('href');
-      if (url && !url.startsWith('http') && !url.startsWith('#') && !link.hasAttribute('target')) {
-        link.addEventListener('click', function (e) {
-          e.preventDefault();
-          document.body.classList.remove('fade-in');
-          document.body.classList.add('fade-out');
-          setTimeout(() => {
-            window.location = url;
-          }, 400);
-        });
-      }
-    });
   </script>
 </body>
 </html>

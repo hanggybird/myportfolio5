@@ -9,7 +9,7 @@ body.fade-out {
 
 .activities-section {
   position: relative;
-  background: linear-gradient(120deg, #2e3239, #3d4147, #2e3239);
+  background: linear-gradient(120deg, #2e3239, #3d4147);
   background-size: 600% 600%;
   animation: bgMove 20s ease infinite;
   padding: 120px 20px 60px;
@@ -18,7 +18,7 @@ body.fade-out {
   overflow: hidden;
 }
 
-.activities-section .overlay {
+.overlay {
   position: absolute;
   inset: 0;
   background: rgba(20, 20, 20, 0.6);
@@ -68,6 +68,7 @@ body.fade-out {
   flex: 1 1 250px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   backdrop-filter: blur(4px);
+  cursor: pointer;
 }
 
 .activities-card:hover {
@@ -95,7 +96,6 @@ body.fade-out {
   line-height: 1.5;
 }
 
-/* Scroll Reveal */
 .scroll-reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -107,14 +107,75 @@ body.fade-out {
   transform: translateY(0);
 }
 
-/* Background Animation */
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 999;
+}
+
+.lightbox.show {
+  display: flex;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 10px;
+  transition: transform 0.3s;
+  cursor: zoom-in;
+}
+
+.lightbox-content img:hover {
+  transform: scale(1.05);
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 2rem;
+  color: white;
+  background: rgba(50, 50, 50, 0.5);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  transform: translateY(-50%);
+}
+
+.arrow.left {
+  left: 30px;
+}
+
+.arrow.right {
+  right: 30px;
+}
+
 @keyframes bgMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Responsive */
 @media screen and (max-width: 768px) {
   .activities-grid {
     flex-direction: column;
@@ -123,5 +184,9 @@ body.fade-out {
 
   .activities-card {
     width: 90%;
+  }
+
+  .arrow {
+    font-size: 1.5rem;
   }
 }

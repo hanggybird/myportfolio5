@@ -1,3 +1,13 @@
+body.fade-in {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+body.fade-out {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
 .certificate-section {
   position: relative;
   background: linear-gradient(120deg, #2e3239, #3d4147, #2e3239);
@@ -44,19 +54,21 @@
 }
 
 .certificate-card {
-  background-color: #3d4147;
+  background-color: rgba(255, 255, 255, 0.04);
   border-radius: 12px;
   border-left: 5px solid #8A9A5B;
   padding: 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   max-width: 300px;
   flex: 1 1 250px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(4px);
+  cursor: pointer;
 }
 
 .certificate-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(138,154,91,0.4);
+  box-shadow: 0 8px 25px rgba(138, 154, 91, 0.4);
 }
 
 .certificate-card img {
@@ -91,6 +103,30 @@
   transform: translateY(0);
 }
 
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 10, 10, 0.95);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+  cursor: zoom-out;
+}
+
+.lightbox img {
+  max-height: 90vh;
+  max-width: 90vw;
+  border-radius: 12px;
+  object-fit: contain;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+}
+
+/* Background animation */
 @keyframes bgMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
